@@ -1,0 +1,42 @@
+.scproductfoods {
+    --grid-column: 2;
+    --row-gap: 52px;
+    --column-gap: 52px;
+    --size-title: 72px;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        column-gap: var(--column-gap);
+        row-gap: var(--row-gap);
+        &-item {
+            position: relative;
+            .title {
+                z-index: 1;
+                @include mid();
+                @include text(var(--size-title), csi, auto, $white-cl, none);
+                width: max-content;
+            }
+            .img {
+                position: relative;
+                height: 0;
+                padding-bottom: 82%;
+                overflow: hidden;
+                img {
+                    @include midimg();
+                }
+            }
+        }
+    }
+    .btn-extra {
+        margin: 80px auto;
+        &:after {
+            width: 182px;
+        }
+    }
+    @include sm {
+        --grid-column: 1;
+    }
+    @include xs {
+        --size-title: 42px;
+    }
+}

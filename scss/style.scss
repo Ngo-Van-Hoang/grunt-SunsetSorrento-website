@@ -1,0 +1,30 @@
+/* Core variables and mixins*/
+
+@import "imports/core/reset";
+@import "imports/core/variables";
+@import "imports/core/mixins";
+@import "imports/core/layouts";
+@import "imports/core/components";
+@import "imports/core/elements";
+@import "imports/core/libs";
+@import "imports/core/loading";
+@import "imports/core/bootstrap_mini";
+
+/* Navigation, header, footer*/
+
+@import "imports/core/header";
+@import "imports/core/nav";
+@import "imports/core/footer";
+
+/* Pages */
+
+@import "imports/pages/home";
+@import "imports/pages/contact";
+@import "imports/pages/abouts";
+@import "imports/pages/services";
+@import "imports/pages/detail-services";
+@import "imports/pages/detail-events";
+@import "imports/pages/events";
+@import "imports/pages/foods";
+@import "imports/pages/destination";
+@import "imports/pages/library";

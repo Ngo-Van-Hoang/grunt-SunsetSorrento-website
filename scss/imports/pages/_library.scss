@@ -1,0 +1,69 @@
+.sctabs {
+    --grid-column: 3;
+    --mg-even: 24px;
+    &__menu {
+        @include mid(true);
+        margin: 0 auto 50px;
+        border-bottom: 1px solid $main-cl;
+        max-width: 308px;
+        &-item {
+            @include text(14px, ol, 30px, $white-cl, uppercase);
+            cursor: pointer;
+            position: relative;
+            padding-bottom: 10px;
+            &:nth-child(even) {
+                margin: 0 var(--mg-even);
+            }
+            &:after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 4px;
+                background: $main-cl;
+                left: 0;
+                bottom: -2px;
+                @include transform(scaleX(0));
+                @include transform-origin( left center);
+                @include transition($t $cubic);
+            }
+            &:hover,
+            &.active {
+                color: $main-cl;
+                &:after {
+                    @include transform(scaleX(1));
+                    @include transform-origin( right center);
+                    @include transition($t $cubic);
+                }
+            }
+        }
+    }
+    &__list {
+        display: none;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        grid-auto-rows: 450px;
+        grid-gap: 24px;
+        &-item {
+            height: 100%;
+            width: 100%;
+            .midimg {
+                width: 100%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+            }
+            img {
+                @include midimg();
+            }
+        }
+        &.active {
+            display: grid;
+        }
+    }
+    @include sm {
+        --grid-column: 2;
+    }
+    @include xs {
+        --grid-column: 1;
+        --mg-even: 20px;
+    }
+}

@@ -1,0 +1,88 @@
+.footer {
+    padding-top: 120px;
+    background: $black-cl;
+    --column-grid: 3;
+    --row-gap: 0;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--column-grid), 1fr);
+        row-gap: var(--row-gap);
+        &-left {
+            .--h4 {
+                margin-bottom: 30px;
+            }
+            .contact {
+                display: flex;
+                align-items: center;
+                &:nth-child(odd) {
+                    margin: 10px 0;
+                }
+                img {
+                    margin-right: 20px;
+                }
+            }
+            .text {
+                @include text(var(--body16-fs), mr, 30px, $white-cl, none);
+                @include transition($t);
+                &:hover {
+                    @include transition($t);
+                    color: $main-cl;
+                }
+            }
+        }
+        &-center {
+            @include text(24px, ci, 40px, $white-cl, none);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 390px;
+            .dsc {
+                text-align: center;
+                padding-top: 30px;
+            }
+        }
+        &-right {
+            text-align: right;
+            .--h4 {
+                margin-bottom: 30px;
+            }
+            .timedate {
+                &:nth-child(odd) {
+                    margin: 18px 0;
+                }
+                @include text(var(--body16-fs), mr, 30px, $white-cl, none);
+                .date {
+                    color: $main-cl;
+                }
+            }
+        }
+    }
+    .copyright {
+        height: 80px;
+        background: $header-cl;
+        margin-top: 95px;
+        @include mid(mid);
+        span {
+            text-align: center;
+            @include text(var(--body16-fs), mr, 30px, $white-cl, none);
+        }
+    }
+    @include sm {
+        --column-grid: 1;
+        --row-gap: 30px;
+        .footer__list {
+            .footer__list-left {
+                margin-bottom: 10px;
+            }
+            .footer__list-center {
+                align-items: flex-start;
+                .dsc {
+                    text-align: initial;
+                }
+            }
+            .footer__list-right {
+                text-align: left;
+            }
+        }
+    }
+}

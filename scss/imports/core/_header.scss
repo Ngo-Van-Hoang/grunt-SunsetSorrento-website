@@ -1,0 +1,162 @@
+.header {
+    @include text(var(--body14-fs), "or", 2.0rem, $white-cl, uppercase);
+    background: $header-cl;
+    height: var(--height-header);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    width: 100%;
+    .container-fluid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        .btnmenu {
+            display: none;
+            width: 40px;
+            height: 27px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            span {
+                display: block;
+                width: 100%;
+                height: 3px;
+                background: $main-cl;
+                position: absolute;
+                top: 50%;
+                @include transform(translateY(-50%));
+                @include transition($t);
+            }
+            &:before,
+            &:after {
+                content: "";
+                width: 100%;
+                height: 3px;
+                display: block;
+                background: $main-cl;
+            }
+            &:after {
+                position: absolute;
+                bottom: 0;
+            }
+            &.active {
+                &:before {
+                    @include transform(rotate(45deg) translate(8px, 8px));
+                    @include transition(transform $t);
+                }
+                span {
+                    opacity: 0;
+                    @include transition($t);
+                }
+                &:after {
+                    @include transform(rotate(-45deg) translate(8px, -10px));
+                    @include transition(transform $t);
+                }
+            }
+        }
+        .header__menu {
+            @include mid(true);
+            height: 100%;
+            @include mid();
+            li {
+                height: 100%;
+                a {
+                    height: 100%;
+                    margin: 0 15px;
+                    position: relative;
+                    color: $white-cl;
+                    display: flex;
+                    align-items: center;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        height: 1px;
+                        background: $main-cl;
+                        left: 0;
+                        bottom: 30px;
+                        @include transform(scaleX(0));
+                        @include transform-origin( left center);
+                        @include transition($t $cubic);
+                    }
+                    &:hover,
+                    &.active {
+                        color: $main-cl;
+                        &:after {
+                            @include transform(scaleX(1));
+                            @include transform-origin( right center);
+                            @include transition($t $cubic);
+                        }
+                    }
+                }
+            }
+        }
+        .header__right {
+            display: flex;
+            align-items: center;
+            gap: 3.5rem;
+            &-lang {
+                position: relative;
+                .current {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    cursor: pointer;
+                    position: relative;
+                    .icondown {
+                        width: 12px;
+                    }
+                }
+                .select {
+                    position: absolute;
+                    top: 4rem;
+                    background: $main-cl;
+                    display: flex;
+                    gap: 0.5rem;
+                    align-items: center;
+                    flex-direction: column;
+                    @include visible(0);
+                    a {
+                        color: $white-cl;
+                        padding: 0.5rem 1.5rem;
+                        @include transition($t);
+                        &:hover {
+                            color: $black-cl;
+                            @include transition($t);
+                        }
+                    }
+                }
+                &.active {
+                    .current {
+                        i {
+                            @include transform(rotateX(180deg));
+                            @include transition($t)
+                        }
+                    }
+                    .select {
+                        @include visible(1);
+                    }
+                }
+            }
+        }
+    }
+    @include md {
+        --height-header: 70px;
+        .container-fluid {
+            .btnmenu {
+                display: block;
+            }
+            .header__logo {
+                @include mid();
+            }
+            .header__menu {
+                display: none;
+            }
+            .header__right {
+                gap: 0.5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,62 @@
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.45s ease-in-out;
+    .nav {
+        min-width: 500px;
+        height: 100vh;
+        background: $black-cl;
+        position: fixed;
+        top: 0;
+        left: -500px;
+        @include transform(initial);
+        z-index: -1;
+        @include visible(0);
+        @include transition($t);
+        &__top {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin: 15px 15px 0 0;
+            &-logo {
+                img {}
+            }
+        }
+        ul {
+            flex-direction: column;
+            @include mid();
+            li {
+                text-align: center;
+                margin: 0 auto;
+                padding: 20px;
+                a {
+                    @include text(var(--body14-fs), "or", 2.0rem, $white-cl, uppercase);
+                    @include transition($t);
+                    &:hover {
+                        color: $main-cl;
+                        @include transition($t);
+                    }
+                    &.active{
+                        color: $main-cl;
+                    }
+                }
+            }
+        }
+        &.active {
+            left: 0;
+            @include visible(1);
+            @include transition($t);
+        }
+    }
+    &.active {
+        @include visible(1);
+        visibility: visible;
+        background-color: rgba(9, 12, 15, 0.8);
+    }
+}

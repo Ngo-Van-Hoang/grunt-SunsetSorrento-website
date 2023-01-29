@@ -1,0 +1,519 @@
+// css img, button, heading, title, input, elements, components...
+img {
+    max-width: 100%;
+    height: auto;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    &.--center {
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+// colors (tuỳ chỉnh)
+.--white-cl {
+    color: $white-cl;
+}
+
+.--black-cl {
+    color: $black-cl;
+}
+
+.--blue-cl {
+    color: $blue-cl;
+}
+
+// css article (nội dung chi tiết bài viết)
+article {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        // font-family: ib; // font bold
+        display: block;
+    }
+    h1 {
+        font-size: var(--h1-fs);
+        line-height: var(--h1-lh);
+        margin: 0 0 0.67rem 0;
+    }
+    h2 {
+        font-size: var(--h2-fs);
+        line-height: var(--h2-lh);
+        margin: 0 0 0.75rem 0;
+    }
+    h3 {
+        font-size: var(--h3-fs);
+        line-height: var(--h3-lh);
+        margin: 0 0 0.83rem 0;
+    }
+    h4 {
+        font-size: var(--h4-fs);
+        line-height: var(--h4-lh);
+        margin: 0 0 1.12rem 0;
+    }
+    h5 {
+        font-size: var(--h5-fs);
+        line-height: var(--h5-lh);
+        margin: 0 0 1.5rem 0;
+    }
+    h6 {
+        font-size: 0.67rem;
+        margin: 0 0 1.67rem 0;
+    }
+    p {
+        margin: 0 0 1.12rem 0;
+    }
+    strong {
+        // font-family: ib; // font bold
+    }
+    ol,
+    ul {
+        list-style: initial;
+        padding-left: 18px;
+    }
+    img {
+        display: inline-block;
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        margin: 25px auto;
+    }
+    .video {
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        position: relative;
+        margin: 25px auto;
+        iframe,
+        video {
+            position: absolute;
+            @include size(100%);
+            top: 0;
+            left: 0;
+        }
+    }
+    @include xs {
+        img {
+            margin: 20px auto;
+        }
+    }
+}
+
+.heading {
+    font-family: ib;
+    &.--h1 {
+        font-size: var(--h1-fs);
+        line-height: var(--h1-lh);
+    }
+    &.--h2 {
+        font-size: var(--h2-fs);
+        line-height: var(--h2-lh);
+    }
+    &.--h3 {
+        font-size: var(--h3-fs);
+        line-height: var(--h3-lh);
+    }
+}
+
+.textbox {
+    max-width: 486px;
+    &.--center {
+        text-align: center;
+        max-width: initial;
+    }
+    .--h4 {
+        @include text(24px, ci, 40px, $main-cl, none);
+    }
+    .--h3 {
+        position: relative;
+        padding-bottom: 30px;
+    }
+    .dsc {
+        @include text(16px, mr, 30px, $white-cl, none);
+        margin-top: 30px;
+    }
+    .feedback {
+        @include text(24px, ci, 40px, $white-cl, none);
+        margin: 20px 0 50px;
+    }
+    @include sm {
+        max-width: initial;
+    }
+}
+
+.itemproduct {
+    background-color: #000000;
+    .imgproduct {
+        position: relative;
+        overflow: hidden;
+        height: 0;
+        padding-top: 79%;
+        img {
+            @include mid();
+            min-height: 100%;
+            min-width: 100%;
+            object-fit: cover;
+            @include transform(translate(-50%, -50%) scale(1.0));
+            @include transition($t);
+            &:hover {
+                @include transform(translate(-50%, -50%) scale(1.1));
+                @include transition($t);
+            }
+        }
+    }
+    .detail {
+        position: relative;
+        cursor: pointer;
+        &:before {
+            content: "";
+            position: absolute;
+            bottom: 10%;
+            left: 0%;
+            width: 134px;
+            height: 1px;
+            background: $main-cl;
+        }
+        padding: 30px;
+        .yellow {
+            @include text(24px, ci, 40px, $main-cl, none);
+            .date {
+                margin-right: 20px;
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: -10%;
+                    @include transform(translateY(-50%) rotate(45deg));
+                    width: 4px;
+                    height: 4px;
+                    background: $main-cl;
+                }
+            }
+        }
+        .dsc {
+            a {
+                @include text(24px, ol, 40px, $white-cl, none);
+            }
+        }
+    }
+}
+
+.inner {
+    &.--left {
+        .line {
+            margin: initial;
+            &.--left {
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+    .line {
+        @include mid(true);
+        width: 100%;
+        margin: 0 auto;
+        max-width: 184px;
+        .box {
+            @include transform-origin(center);
+            @include transform(rotate(45deg));
+            position: relative;
+            width: 13px;
+            height: 13px;
+            border: 1px solid $main-cl;
+            @include mid(true);
+            &::after {
+                content: '';
+                position: relative;
+                display: block;
+                width: 10px;
+                height: 10px;
+                background: $main-cl;
+            }
+        }
+        &::before,
+        &::after {
+            content: '';
+            height: 1px;
+            flex: 1;
+            background-color: $main-cl;
+            display: block;
+        }
+        &.--left {
+            &::before {
+                display: block;
+                margin-right: 5px;
+            }
+        }
+        &.--right {
+            &::after {
+                display: block;
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+.popupvideo {
+    --sizeIcon: 30px;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 900;
+    background: rgba(0, 0, 0, 0.9);
+    @include mid(true);
+    @include visible(0);
+    @include transition($t);
+    &__inner {
+        width: 80%;
+        height: 80%;
+        max-width: 1200px;
+        @include mid;
+        &-iframe {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+            @include mid();
+            border: 5px solid $white-cl;
+            iframe {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .close {
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            width: var(--sizeIcon);
+            height: var(--sizeIcon);
+            border-radius: 50%;
+            cursor: pointer;
+            background: $main-cl;
+            @include mid(true);
+        }
+        img {
+            width: 14px;
+            @include mid(true);
+        }
+    }
+    @include xs {
+        --sizeIcon: 25px;
+        width: calc(100% -20px);
+        height: calc(100% -20px);
+    }
+    &.active {
+        @include visible(1);
+        @include transition($t);
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 30px;
+    right: 30px;
+    border-radius: 50%;
+    border: 1px solid $main-cl;
+    z-index: 500;
+    @include mid(true);
+    @include transition($t);
+    @include visible(0);
+    svg {
+        @include transform(rotate(90deg));
+        fill: $main-cl;
+    }
+    &:hover {
+        background: $main-cl;
+        border: none;
+        svg {
+            fill: $white-cl;
+        }
+    }
+    &.active {
+        @include visible(1);
+    }
+}
+
+.contact-form {
+    display: flex;
+    justify-content: space-between;
+    background-color: #151B20;
+    height: 100%;
+    .info {
+        max-width: var(--max-width-info);
+        width: 100%;
+        padding: 32px;
+        margin-left: 64px;
+        background-color: #090C0F;
+        .title {
+            @include text(24px, mr, 40px, $main-cl, none);
+            text-align: center;
+            margin: 15px 30px 30px;
+        }
+        .people {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+        input {
+            @include text(14px, mr, 30px, $white-cl, none);
+            background: none;
+            border: initial;
+            border-bottom: 1px solid $white-cl;
+            width: 100%;
+            outline: 0;
+            color-scheme: dark;
+        }
+        select {
+            background: none;
+            color: $white-cl;
+            border: initial;
+            border-bottom: 1px solid $white-cl;
+            margin-top: 13px;
+            outline: 0;
+            option {
+                outline: 0;
+                border: initial;
+            }
+        }
+    }
+}
+
+.sctabproduct {
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid $white-cl;
+        padding-bottom: 50px;
+        &-item {
+            display: flex;
+            flex-wrap: wrap;
+            .btn {
+                @include mid(true);
+                @include text (14px, mr, 30px, $white-cl, none);
+                height: 38px;
+                background-color: #222D3B;
+                padding: 0 10px;
+                @include transition($t);
+                &:nth-child(even) {
+                    margin: 0 10px;
+                }
+                &:hover {
+                    @include transition($t);
+                    background-color: $main-cl;
+                }
+            }
+        }
+        .img-share {
+            width: 32px;
+            height: 32px;
+            border: 1px solid $main-cl;
+            border-radius: 50%;
+            @include mid(true);
+            @include transition($t);
+            &:hover {
+                background-color: $white-cl;
+                @include transition($t);
+            }
+        }
+    }
+    &__product {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 50px 0;
+        &-item {
+            @include mid(true);
+            img {
+                width: 76px;
+                height: 76px;
+            }
+            .content {
+                margin: 0 10px;
+                .title {
+                    @include text(16px, ol, 24px, $white-cl, none);
+                }
+                .date {
+                    @include text(14px, ci, 24px, #909090, none);
+                }
+            }
+        }
+    }
+}
+
+.schero {
+    position: relative;
+    padding-top: initial !important;
+    .imghero {
+        background: no-repeat center;
+        background-size: cover;
+        width: 100%;
+        height: 100vh;
+    }
+    .container {
+        @include mid();
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .schero__title {
+            @include mid(true);
+            .--h4 {
+                @include text(var(--body16-fs), ol, 24px, $main-cl, none);
+                @include transition($t);
+                &:hover {
+                    color: $white-cl;
+                    @include transition($t);
+                }
+            }
+            &-white {
+                position: relative;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 10%;
+                    @include transform(translateY(-50%) rotate(45deg));
+                    width: 4px;
+                    height: 4px;
+                    background: $main-cl;
+                }
+                .--h4 {
+                    color: $white-cl;
+                    margin-left: 25px;
+                }
+            }
+        }
+    }
+    @include sm {
+        .imghero {
+            height: 70vh;
+        }
+    }
+    @include xs {
+        .imghero {
+            height: 60vh;
+        }
+        .container {
+            flex-direction: column;
+            .--h3 {
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

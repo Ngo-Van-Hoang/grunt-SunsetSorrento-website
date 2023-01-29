@@ -1,0 +1,218 @@
+.schero {
+    &.--events {
+        .container {
+            .--h3 {
+                position: relative;
+                padding-top: 40px;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 0;
+                    display: block;
+                    width: 172px;
+                    height: 1px;
+                    background-color: $main-cl;
+                }
+            }
+        }
+    }
+}
+
+.scmain {
+    .container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        .scleft {
+            margin-right: 100px;
+            .scbloger {
+                &__list {
+                    &-content {
+                        p {
+                            @include text(16px, mr, 30px, $white-cl, none);
+                            margin-bottom: 50px;
+                        }
+                    }
+                    &-img {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        column-gap: 30px;
+                        margin-bottom: 50px;
+                        .img {
+                            position: relative;
+                            overflow: hidden;
+                            width: 100%;
+                            height: 0;
+                            padding-top: 67%;
+                            img {
+                                @include mid();
+                                object-fit: cover;
+                                min-width: 100%;
+                                min-height: 100%;
+                            }
+                        }
+                    }
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+            .sccontact {
+                .info {
+                    padding: 32px;
+                }
+            }
+            .scotherservices {
+                .container {
+                    .title {
+                        margin-bottom: 35px;
+                    }
+                }
+            }
+        }
+        .scright {
+            position: sticky;
+            position: -webkit-sticky;
+            top: 0;
+            &__list {
+                &-user {
+                    position: relative;
+                    border: 1px solid $main-cl;
+                    @include mid(true);
+                    flex-direction: column;
+                    padding: 30px;
+                    .title {
+                        @include text(24px, ol, 40px, $main-cl, none);
+                        margin-top: 30px;
+                        margin-bottom: 20px;
+                    }
+                    .title-sub {
+                        @include text(16px, mr, 30px, $white-cl, none);
+                    }
+                    .social {
+                        margin-top: 40px;
+                    }
+                    .img-panner-user {
+                        @include mid();
+                        z-index: -1;
+                        height: 100%;
+                    }
+                }
+                &-input {
+                    margin-top: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    position: relative;
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        width: 100%;
+                        height: 1px;
+                        bottom: 0;
+                        background-color: $white-cl;
+                    }
+                    input {
+                        width: 100%;
+                        border: none;
+                        outline: none;
+                        background-color: $black-cl;
+                        @include text(16px, mr, 30px, $white-cl, none);
+                    }
+                    img {
+                        padding-bottom: 10px;
+                        cursor: pointer;
+                    }
+                }
+                &-categories {
+                    margin-top: 50px;
+                    .btn-abouts {
+                        margin-bottom: 20px;
+                    }
+                    .scaccordion__accordion {
+                        margin-bottom: 20px;
+                        display: flex;
+                        align-items: center;
+                        h4 {
+                            @include text(16px, ol, 24px, $white-cl, none);
+                        }
+                        &::before {
+                            content: "";
+                            display: block;
+                            background: url(../img/arow-right.svg) no-repeat;
+                            width: 8px;
+                            height: 12px;
+                            fill: $white-cl;
+                            margin-right: 10px;
+                        }
+                    }
+                }
+                &-recentposts {
+                    .btn-abouts {
+                        margin: 30px 0;
+                    }
+                    .item {
+                        display: flex;
+                        img {
+                            margin-right: 15px;
+                            margin-bottom: 15px;
+                        }
+                        .content {
+                            .title {
+                                @include text(16px, ol, 24px, $white-cl, none);
+                            }
+                            .date {
+                                @include text(12px, mr, 17px, $white-cl, none);
+                            }
+                        }
+                    }
+                }
+                &-tags {
+                    margin: 20px 0;
+                    .btnabouts {
+                        margin-bottom: 20px;
+                    }
+                    .sctabproduct__list-item {
+                        .btn {
+                            margin-right: 10px;
+                            margin-bottom: 10px;
+                            &:nth-child(even) {
+                                margin-left: initial;
+                            }
+                        }
+                    }
+                }
+                &-gallery {
+                    margin: 20px 0;
+                    .btnabouts {
+                        margin-bottom: 20px;
+                    }
+                    .products {
+                        display: grid;
+                        grid-template-columns: repeat(3, 1fr);
+                        row-gap: 10px;
+                    }
+                }
+                &-voucher {
+                    background: $black-cl;
+                    padding: 40px 60px;
+                    .voucher {
+                        @include mid(true);
+                        flex-direction: column;
+                        .content {
+                            margin: 30px 0;
+                            @include mid(true);
+                            flex-direction: column;
+                            .title {
+                                &.--yellow {
+                                    color: $main-cl;
+                                }
+                                @include text(24px, ol, 40px, $white-cl, none);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

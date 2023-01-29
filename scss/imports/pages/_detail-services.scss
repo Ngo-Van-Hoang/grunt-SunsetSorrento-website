@@ -1,0 +1,116 @@
+.schero {
+    &.--detail {
+        .container {
+            display: block;
+            .schero__dsc {
+                margin-top: 30px;
+                @include text(16px, mr, 30px, $white-cl, none);
+                display: flex;
+                .center {
+                    @include mid(true);
+                    &::after,
+                    &::before {
+                        content: "";
+                        display: block;
+                        @include transform(rotate(45deg));
+                        width: 8px;
+                        height: 8px;
+                        background: $white-cl;
+                        margin: 0 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.scblog {
+    .content {
+        display: flex;
+        flex-direction: column;
+        img {
+            margin: 60px 0;
+        }
+        .title {
+            margin-bottom: 30px;
+            @include text(24px, ol, 40px, $white-cl, none);
+        }
+        .dscbottom {
+            margin-top: 30px;
+            @include text(16px, mr, 30px, $white-cl, none);
+        }
+        .dsc {
+            @include text(16px, mr, 30px, $white-cl, none);
+        }
+    }
+}
+
+.sccontact {
+    --pd-left-right: 140px;
+    --grid-column: 2;
+    .contact-form {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        .info {
+            margin-left: initial;
+            padding: 60px var(--pd-left-right);
+        }
+        img {
+            height: 100%;
+        }
+    }
+    @include md {
+        --pd-left-right: 60px;
+    }
+    @include sm {
+        --pd-left-right: 30px;
+    }
+    @include xs {
+        --grid-column: 1;
+        --pd-left-right: 80px;
+        .panerimg {
+            display: none;
+        }
+    }
+}
+
+.scotherservices {
+    --grid-column: 2;
+    --row-gap: 0;
+    .container {
+        .title {
+            @include text(24px, ol, 40px, $white-cl, none);
+        }
+        .scotherservices__list {
+            display: grid;
+            grid-template-columns: repeat(var(--grid-column), 1fr);
+            column-gap: 30px;
+            row-gap: var(--row-gap);
+            &-item {
+                @include mid(true);
+                flex-direction: column;
+                .img-product {
+                    width: 100%;
+                    height: 0;
+                    padding-bottom: 92%;
+                    margin: 30px 0;
+                    overflow: hidden;
+                    position: relative;
+                    img {
+                        @include mid();
+                        min-width: 100%;
+                        min-height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .title {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    @include xs {
+        --grid-column: 1;
+        --row-gap: 40px;
+    }
+}

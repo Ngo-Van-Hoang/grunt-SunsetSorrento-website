@@ -1,0 +1,59 @@
+.sccontact {
+    padding-top: initial!important;
+    .container {
+        display: flex;
+        .sccontact__form {
+            margin-right: 60px;
+            .info {
+                padding: 32px;
+            }
+        }
+        .textbox {
+            .contact {
+                margin: 20px 0;
+                &__list {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    &:last-child {
+                        margin-bottom: initial;
+                    }
+                    .content {
+                        margin-left: 40px;
+                        .title {
+                            @include text(24px, ol, 40px, $white-cl, none);
+                        }
+                        span {
+                            @include text(16px, mr, 30px, $white-cl, none);
+                        }
+                    }
+                }
+            }
+            .social {
+                justify-content: flex-start;
+            }
+        }
+    }
+    @include md {
+        .container {
+            flex-direction: column-reverse;
+            .sccontact__form {
+                margin-right: initial;
+            }
+            .textbox {
+                max-width: initial;
+                margin-bottom: 50px;
+            }
+        }
+    }
+    ;
+}
+
+.scmap {
+    .container-fluid {
+        iframe {
+            width: 100%;
+            height: 500px;
+        }
+    }
+}

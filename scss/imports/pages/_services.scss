@@ -1,0 +1,320 @@
+.scsliderservices {
+    &__list {
+        margin-top: 50px;
+        height: 100%;
+        width: 100%;
+        img {
+            padding-right: 30px;
+            height: 450px;
+        }
+        .text {
+            @include mid();
+            @include text(40px, ol, 54px, $white-cl, none);
+        }
+        .flickity-button {
+            background-color: $black-cl;
+            .flickity-button-icon {
+                fill: $white-cl;
+                @include transition($t);
+                &:hover {
+                    fill: $main-cl;
+                    @include transition($t);
+                }
+                path {
+                    d: path( "M 10,50 L 70,100 L 70,50 L 70,50  L 70,50 L 70,0 Z");
+                }
+            }
+        }
+        .flickity-page-dots {
+            bottom: -50px;
+            @include mid(true);
+            .dot {
+                height: 1px;
+                width: 100px;
+                margin: 0;
+                border-radius: 0;
+                background-color: $main-cl;
+                opacity: 1;
+                &.is-selected {
+                    height: 3px;
+                }
+            }
+        }
+    }
+}
+
+.scbenefits {
+    --grid-columns: 2;
+    --row-gap: 0;
+    .container {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-columns), 1fr);
+        column-gap: 124px;
+        row-gap: var(--row-gap);
+        .scbenefits__left {
+            &-introduce {
+                margin-top: 80px;
+                .item {
+                    display: flex;
+                    align-items: center;
+                    &:nth-child(even) {
+                        margin: 48px 0;
+                    }
+                    &__dsc {
+                        @include text(16px, mr, 30px, $white-cl, none);
+                    }
+                }
+            }
+        }
+        .scbenefits__right {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            &-content {
+                @include mid();
+                text-align: center;
+                width: max-content;
+                .--h3 {
+                    @include text(72px, csi, auto, $white-cl, none);
+                }
+                .--h5 {
+                    @include text(24px, ol, 40px, $white-cl, none);
+                    margin: 30px 0 50px;
+                }
+                .btn-extra {
+                    margin: 0 auto;
+                    background: $white-cl;
+                    color: $black-cl;
+                    @include transition($t);
+                    &:hover {
+                        background: $black-cl;
+                        color: $white-cl;
+                        @include transition($t);
+                    }
+                    &::after {
+                        display: none;
+                    }
+                }
+            }
+            .img-panner {
+                width: 100%;
+                height: 100%;
+            }
+            .img-icon {
+                width: 250px;
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                @include transform(translate(100px, 50px));
+            }
+        }
+    }
+    @include md {
+        .container {
+            .scbenefits__right {
+                .img-icon {
+                    width: 200px;
+                }
+            }
+        }
+    }
+    @include sm {
+        --grid-columns: 1;
+        --row-gap: 50px;
+        .container {
+            .scbenefits__right {
+                .img-icon {
+                    width: initial;
+                }
+            }
+        }
+    }
+    @include xs {
+        .container {
+            .scbenefits__right {
+                .img-icon {
+                    display: none;
+                }
+            }
+            .scbenefits__left {
+                &-introduce {
+                    margin-top: 40px;
+                }
+            }
+        }
+    }
+}
+
+.scparameter {
+    --grid-column: 4;
+    --row-gap: 0;
+    --column-gap: 30px;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        column-gap: var(--column-gap);
+        row-gap: var(--row-gap);
+        &-item {
+            @include mid(true);
+            flex-direction: column;
+            .index {
+                margin-bottom: 30px;
+                @include text(60px, ol, auto, $main-cl, none);
+            }
+            .text {
+                @include text(var(--body16-fs), mr, 30px, $white-cl, none);
+            }
+        }
+    }
+    @include sm {
+        --grid-column: 2;
+        --row-gap: 50px;
+        --column-gap: 0;
+    }
+    @include xs {
+        --grid-column: 1;
+        --row-gap: 50px;
+        --column-gap: 0;
+    }
+}
+
+.scplan {
+    background-color: #151B20;
+    --grid-column: 3;
+    --row-gap: 0;
+    &__bgrtext {
+        position: relative;
+        .bgrtext {
+            z-index: -1;
+            text-align: center;
+            @include text(240px, ol, auto, $black-cl, none);
+        }
+        .textbox {
+            @include mid();
+        }
+    }
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        align-items: center;
+        margin-top: 200px;
+        column-gap: 30px;
+        row-gap: var(--row-gap);
+        &-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            &:nth-child(2) {
+                background-color: #000000;
+            }
+            .title {
+                @include mid(true);
+                flex-direction: column;
+                margin: 50px 0;
+                span {
+                    margin: 30px 0;
+                }
+            }
+            border: 1px solid $main-cl;
+            .text {
+                &.--yellow {
+                    color: $main-cl;
+                }
+                @include text(var(--body16-fs), mr, 30px, $white-cl, none);
+            }
+            span {
+                @include text(60px, ol, auto, $main-cl, none);
+            }
+            .inner {
+                .line {
+                    max-width: 100%;
+                }
+            }
+            .content {
+                margin: 50px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: column;
+                flex: 1;
+                .--title {
+                    @include text(24px, ol, 40px, $white-cl, none);
+                    &:nth-child(even) {
+                        margin: 25px 0;
+                    }
+                }
+                .btn-main {
+                    --p-btn: 7.3rem;
+                    margin-top: 40px;
+                }
+            }
+        }
+        .img-logo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            @include transform(translate(23px, -50px));
+        }
+        .img-menu {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+        }
+    }
+    @include sm {
+        --grid-column: 2;
+        --row-gap: 50px;
+        .scplan__list {
+            align-items: normal;
+        }
+    }
+    @include xs {
+        --grid-column: 1;
+        .scplan__list {
+            &-item {
+                .img-logo {
+                    @include transform(translate(23px, 0px));
+                }
+            }
+        }
+    }
+}
+
+.scphilosophy {
+    --grid-column: 3;
+    --row-gap: 0;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        row-gap: var(--row-gap);
+        justify-items: center;
+        .textbox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .blog {
+                margin-top: 24px;
+                @include text(24px, ci, 40px, $white-cl, none);
+            }
+            .dsc {
+                @include mid(true);
+                flex-direction: column;
+                margin-top: 30px;
+                @include text(16px, mr, 30px, $white-cl, none);
+            }
+            img {
+                margin-top: 30px;
+            }
+        }
+    }
+    @include sm {
+        --grid-column: 1;
+        --row-gap: 50px;
+        .scphilosophy__list {
+            .textbox {
+                padding: 0 50px;
+            }
+        }
+    }
+}

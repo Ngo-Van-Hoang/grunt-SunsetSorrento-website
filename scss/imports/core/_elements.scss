@@ -1,0 +1,94 @@
+.btn-main {
+    --p-btn: 5.3rem;
+    @include text(var(--body14-fs), "or", 2.0rem, $white-cl, uppercase);
+    height: var(--height-button);
+    background: $main-cl;
+    color: $white-cl;
+    padding: 0 var(--p-btn);
+    @include mid(true);
+    cursor: pointer;
+    @include transition($t);
+    &:hover {
+        background: $white-cl;
+        color: $black-cl;
+        @include transition($t);
+    }
+    @include xs {
+        --p-btn: 0.5rem;
+        --height-button: 35px;
+        --body14-fs: 12px;
+        // display: none;
+    }
+}
+
+.btn-extra {
+    &.--center {
+        margin: 64px auto;
+    }
+    height: 57px;
+    width: fit-content;
+    padding: 0 60px;
+    @include text(var(--body14-fs), "or", 20px, $white-cl, uppercase);
+    @include mid(true);
+    position: relative;
+    background: $btn-cl;
+    @include transition($t);
+    &:after {
+        content: "";
+        @include mid();
+        height: 64px;
+        width: 215px;
+        border: 1px solid $main-cl;
+        // z-index: -1;
+    }
+    &:hover {
+        background: $main-cl;
+        @include transition($t);
+    }
+}
+
+.btn-abouts {
+    @include text(var(--body14-fs), "or", 20px, $main-cl, none);
+    position: relative;
+    @include mid(true);
+    @include transition($t);
+    &:after,
+    &:before {
+        content: "";
+        display: block;
+        @include transform(rotate(45deg));
+        width: 8px;
+        height: 8px;
+        background: $main-cl;
+        margin: 0 15px;
+    }
+    &:hover {
+        @include transform(scale(1.1));
+        @include transition($t);
+    }
+}
+
+.heading {
+    @include text(40px, ol, 54px, $white-cl, none);
+}
+
+.social {
+    @include mid(true);
+    margin-top: 24px;
+    a {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $white-cl;
+        border-radius: 50%;
+        @include mid(true);
+        @include transition(($t));
+        &:hover {
+            background-color: $main-cl;
+            border: none;
+            @include transition(($t));
+        }
+        &:nth-child(even) {
+            margin: 0 24px;
+        }
+    }
+}

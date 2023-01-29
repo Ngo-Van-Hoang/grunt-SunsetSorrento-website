@@ -1,0 +1,552 @@
+// SC SLIDER
+.scslider {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    --gap: 8rem;
+    &__list {
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        .flickity-viewport {
+            height: 100% !important;
+        }
+        &-item {
+            height: 100%;
+            width: 100%;
+            .contentslider {
+                @include mid();
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                max-width: 973px;
+                width: 100%;
+                gap: var(--gap);
+                z-index: 1;
+                .logohero {}
+                .--h1 {
+                    font-family: csi;
+                    color: $white-cl;
+                    margin-bottom: 15px;
+                }
+                .--h3 {
+                    display: flex;
+                    align-items: center;
+                    &:after,
+                    &:before {
+                        content: "";
+                        display: block;
+                        width: 100px;
+                        height: 1px;
+                        background: $main-cl;
+                    }
+                }
+            }
+            .imgslide {
+                min-height: 100%;
+                min-width: 100%;
+                @include mid();
+                object-fit: cover
+            }
+        }
+    }
+    .arow {
+        @include mid();
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        i {
+            position: relative;
+            cursor: pointer;
+            .iconarow {
+                fill: $main-cl;
+                @include transition($t);
+                &:hover {
+                    fill: $white-cl;
+                    @include transition($t);
+                }
+                &.--next {
+                    @include transform(scaleX(-1));
+                }
+            }
+            &:after {
+                content: "";
+                @include mid();
+                width: 96px;
+                height: 96px;
+                background: $header-cl;
+                z-index: -1;
+                clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            }
+            &.left {
+                &::after {
+                    left: 2%;
+                }
+            }
+            &.right {
+                &::after {
+                    left: 100%;
+                }
+            }
+        }
+    }
+    @include xs {
+        --gap: 4rem;
+        .scslider__list {
+            .scslider__list-item {
+                .contentslider {
+                    .--h3 {
+                        &:after,
+                        &:before {
+                            width: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// SC ABOUTS
+.scabouts {
+    background: $bgr-black-cl;
+    --column-grid: 4;
+    --row-gap: 0px;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--column-grid), 1fr);
+        column-gap: 30px;
+        row-gap: var(--row-gap);
+        &-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-direction: column;
+            .iconabouts {
+                width: 124px;
+                height: 124px;
+                background: $btn-cl;
+                border-radius: 50%;
+                @include mid(true);
+                @include transition($t);
+                &:hover {
+                    border: 1px solid $main-cl;
+                    @include transition($t);
+                }
+            }
+            .content {
+                .--h4 {
+                    font-size: 24px;
+                    text-align: center;
+                }
+                .dsc {
+                    @include text(var(--body16-fs), mr, 30px, $white-cl, none);
+                    text-align: center;
+                }
+            }
+        }
+    }
+    @include sm {
+        --column-grid: 2;
+        --row-gap: 50px;
+    }
+    @include xs {
+        --column-grid: 1;
+    }
+}
+
+// SC SERVICES
+.scservices {
+    --column-grid: 2;
+    --row-grid: 0px;
+    --img-pd-top: 102.5%;
+    .container {
+        display: grid;
+        grid-template-columns: repeat(var(--column-grid), 1fr);
+        column-gap: 120px;
+        row-gap: var(--row-grid);
+        .scservices__panner {
+            width: 100%;
+            height: 100%;
+            // position: relative;
+            // overflow: hidden;
+            // height: 0;
+            // padding-top: var(--img-pd-top);
+            img {
+                min-height: 100%;
+                min-width: 100%;
+                // @include mid();
+                // object-fit: cover;
+            }
+        }
+        .scservices__detail {
+            .textbox {
+                max-width: initial;
+            }
+        }
+    }
+    @include md {
+        --column-grid: 1;
+        --row-grid: 50px;
+        --img-pd-top: 70.5%;
+    }
+}
+
+// SC MENU
+.scmenu {
+    position: relative;
+    background: $bgr-black-cl;
+    --column-grid: 2;
+    .--center {
+        margin-bottom: initial;
+    }
+    &__menu {
+        margin-top: 70px;
+        display: grid;
+        grid-template-columns: repeat(var(--column-grid), 1fr);
+        column-gap: 30px;
+        &-list {
+            .item {
+                &__content {
+                    display: flex;
+                    align-items: center;
+                    &::before {
+                        content: '';
+                        width: 100%;
+                        height: 1px;
+                        flex: 1;
+                        order: 2;
+                        border-bottom: 1px solid $main-cl;
+                    }
+                    .--h5 {
+                        order: 1;
+                        margin-right: 5px;
+                        @include text(24px, ol, 40px, $white-cl, none);
+                    }
+                    &-price {
+                        order: 3;
+                        margin-left: 5px;
+                        @include text(24px, ol, 40px, $main-cl, none);
+                    }
+                }
+                .dsc {
+                    @include text(var(--body14-fs), mr, 30px, $white-cl, none);
+                }
+                &:nth-child(even) {
+                    margin: 15px 0;
+                }
+            }
+        }
+    }
+    .img-border {
+        width: 100%;
+        height: 100%;
+        @include mid();
+        pointer-events: none;
+        img {
+            &:nth-child(2) {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+    @include sm {
+        --column-grid: 1;
+        .img-border {
+            display: none;
+        }
+    }
+}
+
+// SC VIDEO
+.scvideo {
+    min-height: 500px;
+    width: 100%;
+    position: relative;
+    .iconimg {
+        @include mid();
+        @include mid(true);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 1px solid $white-cl;
+        cursor: pointer;
+        @include transition($t);
+        &:hover {
+            background-color: $main-cl;
+            border: none;
+            @include transition($t);
+        }
+    }
+}
+
+//SC EVENT
+.scevent {
+    overflow: hidden;
+    padding-bottom: initial !important;
+    --column-grid: 3;
+    --row-gap: 0px;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--column-grid), 1fr);
+        column-gap: 30px;
+        row-gap: var(--row-gap);
+        margin-top: 100px;
+        position: relative;
+        .imglogoturn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            overflow: hidden;
+            @include transform(translate(50%, -50%));
+            img {
+                @include animation(turn 2s infinite ease);
+            }
+        }
+        @keyframes turn {
+            to {
+                @include transform(rotate(360deg));
+            }
+        }
+    }
+    @include sm {
+        --column-grid: 1;
+        --row-gap: 50px;
+    }
+}
+
+// SC PARNERSLIDER
+.scparnerslider {
+    width: 100%;
+    .flickity-viewport {
+        width: 100%;
+        overflow: initial;
+    }
+    img {
+        height: 50px;
+        margin-right: 40px;
+        &:hover {
+            fill: $main-cl;
+        }
+    }
+}
+
+// SC MESSAGER
+.scmessager {
+    // overflow: hidden;
+    background: #040404;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    // @include half-p(padding-left);
+    padding-left: clamp(20px, calc((100vw - var(--container-width)) / 2), 999px);
+    &__left {
+        padding: 30px 0;
+        &-run {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__panner {
+        position: relative;
+        height: 100%;
+        img {
+            height: 100%;
+        }
+    }
+    .textbox {
+        max-width: 486px;
+        .title {
+            position: relative;
+            max-width: max-content;
+            img {
+                position: absolute;
+                top: 50%;
+                right: 0%;
+                transform: translateY(-50%);
+            }
+        }
+        .run {
+            .dsc {
+                @include text(24px, ci, 40px, $white-cl, none);
+                .title {
+                    margin-top: 34px;
+                    @include text(24px, ol, 40px, $white-cl, none);
+                }
+                .position {
+                    @include text(14px, mr, 30px, $main-cl, none);
+                }
+            }
+        }
+    }
+    .arow {
+        cursor: pointer;
+        display: flex;
+        margin-top: 20px;
+        .iconarow {
+            fill: $main-cl;
+            &.--prev {
+                margin-right: 10px;
+            }
+            &.--next {
+                @include transform(scaleX(-1));
+            }
+            &:hover {
+                fill: $white-cl;
+            }
+        }
+    }
+    &__panner {}
+    @include sm {
+        display: block;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        .scmessager__left {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+        }
+        .scmessager__panner {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+            transform: translateX(50%);
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    @include xs {
+        .scmessager__panner {
+            transform: translateX(30%);
+        }
+    }
+}
+
+//SC DESTINATION
+.scdestination {
+    --column-grid: 5;
+    --row-grid: 0px;
+    --mrg-top: 60px;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(var(--column-grid), 1fr);
+        column-gap: 30px;
+        row-gap: var(--row-grid);
+        &-item {
+            &:nth-child(even) {
+                margin-top: var(--mrg-top);
+            }
+            .imgdestination {
+                position: relative;
+                overflow: hidden;
+                height: 0;
+                padding-top: 136%;
+                img {
+                    min-height: 100%;
+                    min-width: 100%;
+                    @include mid();
+                    object-fit: cover;
+                    @include transform(translate(-50%, -50%) scale(1.0));
+                    @include transition($t);
+                    &:hover {
+                        @include transform(translate(-50%, -50%) scale(1.1));
+                        @include transition($t);
+                    }
+                }
+            }
+            .title {
+                text-align: center;
+                cursor: pointer;
+                margin-top: 30px;
+                .--h4 {
+                    @include text(24px, ol, 40px, $white-cl, none);
+                }
+                .dsc {
+                    @include text(14px, mr, 30px, $main-cl, none);
+                }
+            }
+        }
+    }
+    @include xs {
+        --column-grid: 1;
+        --row-grid: 30px;
+        --mrg-top: initial;
+        .scdestination__list {
+            .scdestination__list-item {
+                &:nth-child(even) {
+                    margin: 30px 0;
+                }
+            }
+        }
+    }
+}
+
+//SC FACTS
+.scfacts {
+    --fz-span: 90px;
+    --max-width-info: 346px;
+    &__contact {
+        display: flex;
+        justify-content: space-between;
+        .textbox {
+            margin-bottom: 60px;
+            .comfortable {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 50px;
+                .amount {
+                    span {
+                        @include text(var(--fz-span), ol, 30px, $main-cl, none);
+                    }
+                    p {
+                        @include text(24px, ci, 40px, $white-cl, none);
+                    }
+                }
+            }
+        }
+    }
+    @include md {
+        --max-width-info: 600px;
+        .scfacts__contact {
+            flex-direction: column-reverse;
+            .contact-form {
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                margin-top: 50px;
+                .info {
+                    margin-left: initial;
+                }
+            }
+            .textbox {
+                max-width: 600px;
+            }
+        }
+    }
+    @include xs {
+        --fz-span: 70px;
+        .scfacts__contact {
+            flex-direction: column;
+            .contact-form {
+                margin-top: initial;
+                margin-bottom: 50px;
+                img {
+                    display: none;
+                }
+                .info {
+                    width: 100%;
+                    padding: initial;
+                    .btn-main {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}
